@@ -33,4 +33,10 @@ ax.set_xlabel('x1')
 ax.set_ylabel('x2')
 ax.set_zlabel('y')
 
+#the below function would rotate the 3d plot along the height and z axes respectively
 #ax.view_init(30, 270)
+
+#we could also do a contour plot instead of 3d plots
+
+plt.contourf(XX1, XX2, Y)
+plt.show()
