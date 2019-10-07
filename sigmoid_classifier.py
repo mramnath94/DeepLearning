@@ -4,6 +4,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, mean_squared_error
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.datasets import make_blobs
+from tqdm import tqdm_notebook
 
 class SigmoidNeuron:
   
@@ -47,9 +48,9 @@ class SigmoidNeuron:
     if display_loss:
       loss = {}
       
-    dw = 0;
-    db = 0;
-    for i in range(epochs):
+    for i in tqdm_notebook(range(epochs), total = epochs, unit = "epoch"):
+      dw = 0;
+      db = 0;
       for x,y in zip(X,Y):
         if loss_function == 'mse':
           dw += self.grad_w_mse(x,y)
@@ -58,8 +59,8 @@ class SigmoidNeuron:
           dw += self.grad_w_ce(x,y)
           db += self.grad_b_ce(x,y)
       m = X.shape[1]
-      dw -= learning_rate * (dw/m)
-      db -= learning_rate * (db/m)
+      self.w -= learning_rate * (dw/m)
+      self.b -= learning_rate * (db/m)
       
       if display_loss:
         Y_pred = self.sigmoid(self.perceptron(X));

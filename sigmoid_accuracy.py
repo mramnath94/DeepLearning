@@ -86,3 +86,27 @@ class SigmoidNeuron:
       y_pred = self.sigmoid(self.perceptron(x));
       Y_pred.append(y_pred)
     return np.array(Y_pred)
+
+
+data,labels = make_blobs(n_samples = 1000, centers = 4, n_features = 2, random_state = 0)
+labels_orig = labels
+labels = np.mod(labels_orig, 2)
+
+X_train, X_test, Y_train, Y_test = train_test_split(data, labels, stratify = labels, random_state = 0)
+sn = SigmoidNeuron()
+sn.fit(X_train, Y_train, epochs = 1000, learning_rate =0.5, display_loss = True)
+
+Y_pred_train = sn.predict(X_train)
+Y_pred_binarised_train = (Y_pred_train >= 0.5).astype("int").ravel()
+Y_pred_test = sn.predict(X_test)
+Y_pred_binarised_test = (Y_pred_test >= 0.5).astype("int").ravel()
+train_accuracy = accuracy_score(Y_pred_binarised_train, Y_train)
+test_accuracy = accuracy_score(Y_pred_binarised_test, Y_test)
+print("Train accuracy ", round(train_accuracy, 2))
+print("Test accuracy ", round(test_accuracy, 2))
+
+
+plt.scatter(X_train[:,0], X_train[:,1], c = Y_pred_binarised_train, s = 15 * (np.abs(Y_pred_binarised_train - Y_train) + 0.2))
+plt.show()
+
+
