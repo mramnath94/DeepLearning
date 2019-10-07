@@ -85,3 +85,12 @@ class SigmoidNeuron:
       y_pred = self.sigmoid(self.perceptron(x));
       Y_pred.append(y_pred)
     return np.array(Y_pred)
+
+
+data,labels = make_blobs(n_samples = 1000, centers = 4, n_features = 2, random_state = 0)
+labels_orig = labels
+labels = np.mod(labels_orig, 2)
+
+X_train, X_test, Y_train, Y_test = train_test_split(data, labels, stratify = labels, random_state = 0)
+sn = SigmoidNeuron()
+sn.fit(X_train, Y_train, epochs = 1000, learning_rate =0.5, display_loss = True)
