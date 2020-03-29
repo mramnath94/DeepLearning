@@ -15,3 +15,8 @@ Takeaway's
   No matter how complex the function, we can always compute the derivative w.r.t any variable
   using the chain rule.
   We can reuse a lot of work by starting backwards and computing simpler elements in the chain
+
+Backpropogation by memoization
+  Gradients wrt output layer
+  Gradients wrt hidden layers (>=0)
+  Gradient wrt weights / biases
