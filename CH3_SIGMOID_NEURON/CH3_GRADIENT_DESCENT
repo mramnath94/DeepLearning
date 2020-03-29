@@ -1,0 +1,17 @@
+1. Learning by guessing - Its not going to work always and for large datasets / features it is very tough
+  1. Steps:
+    a. Initialise: w,b to 0
+    b. Iterate over Data: guess_and_update(xi)
+      i. w = w + 𝚫w
+      ii. b = b + 𝚫b
+      iii. Here, 𝚫w and 𝚫b are the amounts we change w and b, by pure guess-work. We need to design a function to replace the guess-work.
+    c. Till satisfied
+
+2. Concepts 
+  Cost function ( y = x^2), Tangential slope, Learning rate, Derivatives (Power rule and Chain rule), Partial derivatives
+
+
+3. Basics - https://towardsdatascience.com/gradient-descent-algorithm-and-its-variants-10f652806a3
+
+4. Maths behind Gradient descent - https://towardsdatascience.com/understanding-the-mathematics-behind-gradient-descent-dde5dc9be06e
+

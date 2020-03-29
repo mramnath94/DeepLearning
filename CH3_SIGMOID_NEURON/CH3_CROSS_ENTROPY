@@ -1,0 +1,41 @@
+1. Probability distribution and entropy
+
+  Entropy is a measure of the uncertainty associated with a given distribution q(y).
+
+  For 2 classes ,lets say true / false and if there are equal occurences of both (P(true) = 0.5 and P(false) = 0.5), then entropy is maximum. 
+
+  In the above case, entropy H(q) = log(2) 
+  In general, H(q) = - summation i = 1 to C, q(yc).log(q(yc))
+  where C = total number of classes (2 in the example taken above) and yc is the probabity of each class
+
+  Meaning its more uncertain to guess. For cases where P(event) = 1, entropy is 0
+  So, if we know the true distribution of a random variable, we can compute its entropy
+
+
+2. Cross entropy and its need
+
+  So, if we know the true distribution of a random variable, we can compute its entropy. But, if that’s the case, why bother training a classifier in the first place? After all, we KNOW the true distribution.
+  But, what if we DON’T? Can we try to approximate the true distribution with some other distribution, say, p(y)? Sure we can! 
+
+  In our case, the actual values are the true distribution (q(y)) and our predicted values are predicted distributions (p(y)).
+  If we compute entropy like this, we are actually computing the cross-entropy between both distributions:
+
+  Cross entropy, H(q) = - summation i = 1 to C, q(yc).log(p(yc))
+
+  If we, somewhat miraculously, match p(y) to q(y) perfectly, the computed values for both cross-entropy and entropy will match as well.
+
+3. KL Divergence
+
+  Cross entropy - entropy = KL Divergence
+  This means that, the closer p(y) gets to q(y), the lower the divergence and, consequently, the cross-entropy, will be.
+
+4. Loss Function 
+
+  During its training, the classifier uses each of the N points in its training set to compute the cross-entropy loss, effectively fitting the distribution p(y)! Since the probability of each point is 1/N, cross-entropy is given by:
+
+  Hence q(yc) = 1/N
+
+  Cross entropy = - 1/N summation i = 1 to N log(p(yi))
+
+5. Binary Cross entropy - to be derived from the above
+

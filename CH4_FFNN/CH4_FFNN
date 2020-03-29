@@ -1,0 +1,23 @@
+1. Representation power of functions
+  Existing models cannot solve non-linearly / non-sigmoid curve separable data. 
+  Hence we need some continous functions (so that it can be differentiable). More smooth at the boundaries
+
+2. General representation of complex functions
+  With multiple sigmoids, we can adjoin them and build any complicated functions. These are called Deep Neural Networks. Sigmoids are the building blocks of DNN's.
+  A deep neural network with a certain number of hidden layers would be able to approximate any function between the input and output. Each hidden layer consists of varied number of sigmoids
+
+3. Universal approximation theorem. - Neural network formation by sigmoid subtraction
+
+4. Mathematical representation of multiple hidden layers
+  Pre-activation and activation function
+  Pre-activation computation using matrix multiplication
+  Shape / Size of Pre-activation and activation variables
+  Output layer - Output function representation in terms of inputs x and b
+  Output layer of multi class classification - Probabistic distribution and need for softmax
+
+5. Hyperparameter tuning
+  Number of layers, number of neurons in each layer, learning rate, batch size
+
+6. Loss function - cross entropy, cross entropy for softmax
+
+

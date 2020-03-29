@@ -1,0 +1,69 @@
+MP Neuron Model
+What is the mathematical model?
+  1. Inputs belong to a discrete set of values {0,1}
+  2. g aggregates the inputs and function f takes a decision based on these aggregations
+  3. These inputs can be excitatory or inhibitory
+  a. y = 0 if xi is inhibitory (outputs zero, sort of an override), else
+  b. g(x) = i = 1 to n, summation x(i)
+  c. y = f(g(x))
+    i. y = 1 if g(x) >= b
+    ii. y = 0 if g(x) < b
+    iii. Where b is a threshold value
+    iv. b is a parameter, it is adjusted with the aim of maximizing the number of correct predictions
+  Consider the example of LBW prediction where inputs are Pitch in line(x1) Impact(x2) Missing Stumps(x3) and output (y) is to predict if its LBW or not..
+  https://github.com/mramnath94/DeepLearning/blob/master/mp_neuron.py
+
+MP Neuron Loss
+How do we compute the loss
+  1. Take the square of the difference to ignore the sign.
+  2. cost/loss = summation of squares of differences between predicted and actual output.  
+
+MP Neuron Learning Algorithm - How do we train our model
+  1. In this case, we have only one parameter, so we can afford to use brute force search.
+    a. Here, consider we have n features
+    b. b can only range from 0 to n, else it would be a pointless parameter
+    c. b has discrete values only, as the inputs are also discrete values
+
+MP Neuron Evaluation
+  1.Accuracy = No. of correct predictions/ Total No. of predictions (¾ = 75% in test set)
+
+MP Neuron - Geometric Basics
+  1. Chapter on geometry basics, a brush-up.
+  2. x2 = mx1 + c
+  3. In 2D: General form ax1 + bx2 + c = 0
+    a. Consider a = 2, b = 1, c = -2
+    b. The intercepts are 1 and 2
+    c. Consider the point (1,2), plugging it into the equation gives us the value 2
+    d. If ax1 + bx2 + c > 0 then it is above the line
+    e. If ax1 + bx2 + c < 0 then it is below the line
+    f. If ax1 + bx2 + c = 0 then it is on the line
+  4. In 3D: General form ax1 + bx2 + cx3 + d = 0
+    a. If ax1 + bx2 + cx3 + d > 0 then it is above the line
+    b. If ax1 + bx2 + cx3 + d < 0 then it is below the line
+    c. If ax1 + bx2 + cx3 + d = 0 then it is on the line
+
+MP Neuron Geometric Interpretation
+  1. In 2D: ax1 + bx2 + d = 0
+    a. x2 = -(a/b)x1 - (d/b)
+    b. x2 = mx1 + c
+    c. Where m = -a/b
+    d. c = -d/b
+  2. MP Neuron model in 2D can be rewritten as
+    a. x1 + x2 - b >= 0 (decision boundary)
+    b. Positive predictions(1) yield a value >= 0 and lie above the decision boundary
+    c. Negative predictions(0) yield a value < 0 and lie below the decision boundary
+  3. This is a very restrictive model with respect to the freedom it has due to only  one parameter  
+  4. Some downsides to this model 
+  a. Boolean inputs and outputs 
+  b. The model is linear  
+  c. The model has a fixed slope
+  d. The model has few possible intercepts(b’s)
+
+MP Neuron Summary
+  1. Data: All boolean inputs ☹
+  2. Task: Binary classification (boolean output) ☹
+  3. Model: Linear decision boundary, all +ve points lie above the line ane -ve points are below (minimum flexibility) ☹
+  4. cost/loss: mean squared error
+  5. Learning: brute force approach to learn best parameter b ☹
+  6. Evaluation: Accuracy
+

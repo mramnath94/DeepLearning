@@ -1,0 +1,17 @@
+1. Partial derivatives and chain rule
+
+Why do we care about the chain rule of derivatives
+  Here, the output ŷ is a composite dependent on input x and all of the parameters w
+
+  Loss function : L = f(x, w1 , w2 , w3)
+  Here, computation happens from input layer to the output layer ie forward propagation
+
+  Derivative calculation happens backwards from the output layer to the input, ie back propagation
+
+
+In case of complext NN, there are multiple paths from output (or loss function) to the input.. Derivative of lost to input should be the sum of derviatives of chain rule applied to each of the path's 
+
+Takeaway's
+  No matter how complex the function, we can always compute the derivative w.r.t any variable
+  using the chain rule.
+  We can reuse a lot of work by starting backwards and computing simpler elements in the chain

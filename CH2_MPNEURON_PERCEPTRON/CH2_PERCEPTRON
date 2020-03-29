@@ -1,0 +1,112 @@
+PERCEPTRON
+Introduction to the Perceptron, a summary.
+  Data: real inputs 
+  Task: Classification(boolean output) 
+  Model: Weights for every input, but still linear 
+  Cost/loss: Summation of max (0,1 - yi * yi(cap) ) 
+  Learning: Our first learning algorithm
+  Evaluation: accuracy
+
+Perceptron Data and Task
+  1. Perceptron can also take real inputs
+  2. Apply feature scaling to standardize real input values x’ = (x-min)/(max-min)
+  https://github.com/mramnath94/DeepLearning/blob/master/standardisation.py
+
+Perceptron Model
+  1. y(cat) = 1 if summation i = 1 to n, w(i)*x(i) >= b
+  2. y(cat) = 0 otherwise
+  3. Each parameter has a different effect on the output, some more, some less, some directly proportional and some, inversely proportional.
+  4. Weights (θ/w) allow us to do this effectively.
+  5. x = [0, 0.19, 0.64, 1, 1, 0] features
+  6. w = [0.3, 0.4, -0.3, 0.1, 0.5] weights
+  7. x.w = summation i = 1 to n w(i)x(i)
+
+Perceptron Geometric Interpretation
+  1. b can now take real values, and slope can change by varying w
+  2. x1 + x2 - b = 0
+  3. w1x1 + w2x2 - b = 0
+  4. x2 = -(w1/w2)x1 + (b/w2)
+  5. This results in more freedom than MP Neuron.
+  6. However, it only works with linearly separable data
+
+Perceptron Loss
+  1. Loss/cost
+    a. = 0 if y = ŷ,
+    b. = 1 otherwise
+  2. The Perceptron loss is almost identical to the square error loss function
+
+Perceptron Learning - General Recipe
+  1. Consider the following data
+  Weight(x1)  Screen Size(x2) Liked(y)
+  0.19        0.64            1
+  0.63        0.81            1
+  0.33        0.67            0
+  1           0.88            0
+  2. Randomly initialize parameters w1(𝜃1), w2(𝜃2) and b(𝜃0)
+  3. Iterate over data:
+    a. L = compute_loss(xi)
+    b. update(w1,w2,b,L)
+    c. Repeat till satisfied, till zero loss or some defined value ε is reached.
+
+Perceptron Learning Algorithm
+What does the perceptron learning algorithm look like?
+  1. Perceptron model: ŷ = summation i = 1 to n, w(i)*x(i) >= b
+    a. Can be rewritten as w1x1 + w2x2 - b >= 0
+    b. Let w0 = b and x0 = 1
+    c. Further rewritten as w1x1 + w2x2 - w0x0 >= 0
+    d. ŷ = summation i = 1 to n, w(i)*x(i) >= 0
+    e. Can be written as wTx >= 0
+    f. Where wTx = w.x
+  2. Perceptron Learning Algorithm
+    a. P ⇒ Inputs with label 1
+    b. N ⇒ Inputs with label 0
+    c. Initialize w(w0...wn) randomly
+    d. While !convergence do:
+      i. Pick random x ∈ P ∪ N
+      ii. If x ∈ P and summation i = 0 to n w(i)*x(i) then, w = w + x; end
+      iii. If x ∈ N and summation i = 0 to n w(i)*x(i) then, w = w - x; end
+    e. end
+    f. The algorithm converges when all the inputs are classified correctly
+
+Perceptron learning algorithm - why it works ? - https://d11kzy43d5zaui.cloudfront.net/DeepLearningCourse/pdf/Primitive-Neurons/Lesson+17_+Learning+-+Why+it+works_.pdf
+
+Perceptron Learning - Will this algorithm always work?
+  1. It will only work if the data is linearly separable
+  2. If it is not linearly separable, the algorithm will never converge (ie, predict  all training examples correctly) 
+  3. Linearly Separable: Two sets   P and N of points in an n-dimensional space are   called absolutely linearly separ  able if 
+    a. n+1 real numbers wo,w1,...wn   exist s uch that 
+    b. Every point(xo,x1,...xn) ∈ P   satisfies summation i = 0 to n, w(i)*x(i) > w0  
+    c. Every point(xo,x1,...xn) ∈ N satisfies summation i = 0 to n, w(i)*x(i) < w0  
+  4. If the sets P and N are finite and linearly separable, the Perceptron learning   algorithm will converge in a finite number of steps
+
+Perceptron Evaluation 
+  1. Number of correctly predicted values / Number of total test data * 100
+
+Perceptron Summary
+  1. Data: real inputs
+  2. Task: Classification (Boolean output)
+  3. Model: summation i = 0 to n, w(i)*x(i) >= 0
+  4. Cost/loss: Σi 1(yi ≠ ŷi)
+  5. Learning Algorithm: Randomly assign and adjust w and b iteratively till  convergence  
+  6. Evaluation: Accuracy 
+  7. Perceptron can be used for image detection.
+
+Perceptron Algorithm - https://github.com/mramnath94/DeepLearning/blob/master/perceptron.py
+
+LIMITATIONS OF PERCEPTRON 
+
+  1. The function looks like a step, it has a value beyond which the curve  suddenly changes orientation 
+  2. So it divides the input space into two halves with negative on one side and  positive on one side 
+  3. This case reproduces in higher dimensions, 2D, 3D etc.
+  4. It cannot be applied to non-linearly separable data.
+  5. The function  is harsh at the boundary. For eg: 49.9 would be 0 and 50.1 would be 1. In practical real-life scenarios, a much smoother boundary is more applicable.
+
+What is  the  road ahead?
+  a. Data: Real inputs 😃
+  b. Task: Regression/Classification, Real output 😃
+  c. Model: Smooth at boundaries, Non-linear(😃 and because it’s not a very advanced
+  non-linear model) 
+  d. Learning: A more generic Learning Algorithm 😃
+  e. Evaluation: Accuracy, Root-mean-squared-error
+
+      

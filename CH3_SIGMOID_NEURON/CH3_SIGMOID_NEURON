@@ -1,0 +1,29 @@
+SIGMOID NEURON
+
+  1. The sigmoid function is provides a smoother, s-shaped curve as opposed to a stepped line
+  2. The function is defined as y = 1/(1 + exp(-(Σwixi + b)), where i = 1 to n
+  3. Substituting different values for (wTx + b) and y, we will be able to trace out a smooth curve
+  4. In General, for n inputs, the output function y = 1/(1 + exp(-(wTx + b))
+
+
+How does the function behave if we change w and b
+  1. w: (controls the slope)
+    a. Negative w, negative slope, mirrored s-shape, becomes more harsh(vertical/less smooth) the more negative it goes
+    b. Positive w, positive slope, normal s-shape, becomes more harsh(vertical/less smooth) the more positive it goes
+  2. b: (controls the midpoint)
+    a. y = 1/(1 + exp(-(wx + b)) = 0.5 (for w=1.00, b = -5)
+    b. exp(-(wx + b)) = 1
+    c. wx + b = 0
+    d. x = -b/w (As b becomes more -ve, boundary moves more to the right +ve, and vice versa)
+
+What kind of data and tasks can Sigmoid Neuron process
+  1. Here, the Sigmoid neuron can process data similar to the Perceptron, the difference being the output is real valued, from 0 to 1.
+  2. This allows us to perform regression: Where we predict y as a continuous value, being some function applied to x,
+  3. ŷ = f(x), where f() is the sigmoid function in this case
+
+Sigmoid Loss Function - Squared error loss and cross entropy loss
+
+  1. Squared error loss = summation i = 1 to n (y(actual) - y(predicted)) squared. 
+  2. This also works if y is boolean
+  3. The interesting thing to note here is that in sigmoid neuron, each individual points contribute differently to the overall loss. Some points are more correct than others and some are more wrong than others.
+  4. Whereas in Perceptron, it was either right or wrong, no degrees of correctness or wrongness.
