@@ -20,3 +20,19 @@ Backpropogation by memoization
   Gradients wrt output layer
   Gradients wrt hidden layers (>=0)
   Gradient wrt weights / biases
+
+
+Gradients wrt output layer = -(y - y^)
+Gradients wrt hidden layers - 
+  https://s3.ap-south-1.amazonaws.com/videos.guvi.in/DeepLearningCourse/pdf/Training-Feedforward-Networks/Lesson+28_+Computing+Derivatives+w.r.t.+Hidden+Layers+-+Part+1.pdf
+  https://s3.ap-south-1.amazonaws.com/videos.guvi.in/DeepLearningCourse/pdf/Training-Feedforward-Networks/Lesson+29_+Computing+Derivatives+w.r.t.+Hidden+Layers+-+Part+2.pdf
+  https://s3.ap-south-1.amazonaws.com/videos.guvi.in/DeepLearningCourse/pdf/Training-Feedforward-Networks/Lesson+34_+Summary.pdf
+  https://s3.ap-south-1.amazonaws.com/videos.guvi.in/DeepLearningCourse/pdf/Training-Feedforward-Networks/Lesson+30_+Computing+Derivatives+w.r.t.+Hidden+Layers+-+Part+3.pdf
+Gradients wrt weights / biases
+  https://s3.ap-south-1.amazonaws.com/videos.guvi.in/DeepLearningCourse/pdf/Training-Feedforward-Networks/Lesson+31_+Computing+derivatives+w.r.t.+one+weight+in+any+layer.pdf
+  https://s3.ap-south-1.amazonaws.com/videos.guvi.in/DeepLearningCourse/pdf/Training-Feedforward-Networks/Lesson+32_+Computing+derivatives+w.r.t.+all+weights+in+any+layer.pdf
+Summary 
+  https://s3.ap-south-1.amazonaws.com/videos.guvi.in/DeepLearningCourse/pdf/Training-Feedforward-Networks/Lesson+33_+A+running+example+of+backpropagation.pdf
+
+
+
