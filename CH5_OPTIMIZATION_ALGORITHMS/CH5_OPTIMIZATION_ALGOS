@@ -1,0 +1,28 @@
+Summary of DL success in the past decade - 
+  Better Learning Algos
+  Better Initialization
+  Better Activations
+  Better Regularization
+  More data, computing, democratization
+
+Loss Visulaization - 
+  
+  Gradients and changes in w,b are very small when slope is gentle and very high when slope is steep 
+
+  If we do a contour plot, loss in all points in the perimeter of the contour are same
+
+  Also a small distance between two contours indicate a steep slope and a large distane indicates a gentle slope
+
+  Visulaize loss with contour plots - https://s3.ap-south-1.amazonaws.com/videos.guvi.in/DeepLearningCourse/pdf/Optimization_Algorithms/Lesson+6_+Visualizing+gradient+descent+on+a+2D+contour+map.pdf
+
+  Hence even with large epochs, the variation in loss with gradient descent is very low (it takes very less steps in less slopy regions). To overcome this, momentum gradient descent (MGD) was introduced
+
+Momentum Gradient descent - 
+
+  In addition to changing w,b based on current gradient it also takes exponential decay average of history of gradients computed till now. Hence variation is loss moves quicker across all regions - https://s3.ap-south-1.amazonaws.com/videos.guvi.in/DeepLearningCourse/pdf/Optimization_Algorithms/Lesson+8_+Dissecting+the+update+rule+for+momentum+based+gradient+descent.pdf
+
+  One disadvantage with MGD is we would end up overcoming the global minima if the exponential decay average component is more than the current gradient descent
+
+Nestervo Accelerated gradient - 
+
+  To overcome the above shortcoming, we use NAG, which first adjusts current w,b based on the exponential decay average component (w = w - EDA) and then computes gradient descent on the adjusted value. This would also end up overshooting the global maxima, but the overshoot distance would be less - https://s3.ap-south-1.amazonaws.com/videos.guvi.in/DeepLearningCourse/pdf/Optimization_Algorithms/Lesson+11_+Intuition+behind+nesterov+accelerated+gradient+descent.pdf
