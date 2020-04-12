@@ -68,4 +68,6 @@ Learning rate optimization
     Mini-batch GD
     Stochastic GD
 
+
+Vectorized variations of GD code - https://colab.research.google.com/drive/1MY6cDJKxEtgIXGi_pWdUQTpoUnSboYBK#forceEdit=true&sandboxMode=true
   
