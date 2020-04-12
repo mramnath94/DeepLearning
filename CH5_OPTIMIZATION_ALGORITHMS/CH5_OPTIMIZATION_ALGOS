@@ -26,3 +26,46 @@ Momentum Gradient descent -
 Nestervo Accelerated gradient - 
 
   To overcome the above shortcoming, we use NAG, which first adjusts current w,b based on the exponential decay average component (w = w - EDA) and then computes gradient descent on the adjusted value. This would also end up overshooting the global maxima, but the overshoot distance would be less - https://s3.ap-south-1.amazonaws.com/videos.guvi.in/DeepLearningCourse/pdf/Optimization_Algorithms/Lesson+11_+Intuition+behind+nesterov+accelerated+gradient+descent.pdf
+
+
+Variants of gradient descent
+  
+  Stochastic - Update weight / bias after each step in epoch
+  Mini batch - Update weight / bias after 'n' steps in each epoch where n is the batch size
+  Batch - Update weight / bias after all steps in a epoch is done - Usual GD that we have used till now
+
+Learning rate optimization
+
+  Derivative is proportional to the input and weight update is proportional to derivative. Hence for sparse values (features) learning rate should be high and for dense features learning rate should be low
+
+  AdaGrad - For each weight update, divide the learning rate by the sum of the squares of all weight updates till now
+  Intuition for AdaGrad (adaptive gradient) - Decay the learning rate for parameter in proportion to its update history (fewer updates, lesser decay)
+
+
+  Disadvantage of AdaGrad - For dense features, when sum of squares of weight history becomes high, learning rate almost becomes 0. Hence AdaGrad fits for sparse features but for dense features, it doesnt converge to global minima loss
+
+  To overcome the above disadvantage, RMSProp was introduced which does the following for each weight update - 
+
+  RMSProp - For each weight update, divide the learning rate by the exponential decay average of the sum of square of all weight updates till now. Decay average ensures that the denominator doesnt increase to a large number which would result in learning rate to be 0 for dense features.
+
+  Adam - Adam is basically Momentum gradient descent plus RMSProp.. Basically learning rate is adjusted based on RMSProp and derivative is adjusted based on history of weight updates similar to Momentum based gradient descent
+
+
+  Summary -
+
+  GD variants - for weight updates
+    Gradient descent (Parameters - epochs, learning rate. Usually needs high epochs to get to global minimal loss. Learning is very small, in regions where slope is very less)
+    Momentum gradient descent (Parameters - Gamma, epochs, learning rate. Usually if gamma value is less, for lesser learning rates, momentum gradient descent descent doesnt perform well)
+    Nesterov accelerated gradient descent (Parameters - Gamma, epochs, learning rate)
+
+  For learning rate updates - 
+    AdaGrad (Parameters - epochs, learning rate and epsilon. For lesser learning rates, AdaGrad doesnt have weight updates after certain epochs)
+    RMSProp (Parameters - epochs, learning rate, epsilon and beta)
+    Adam (Parameters - epochs, learning rate, epsilon, gamma, beta1 and beta2)
+
+  For training / number of steps 
+    Batch GD
+    Mini-batch GD
+    Stochastic GD
+
+  
