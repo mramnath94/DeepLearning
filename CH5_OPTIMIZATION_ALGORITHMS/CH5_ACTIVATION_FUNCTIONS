@@ -1,0 +1,22 @@
+Need for activation functions - 
+  
+  If we do not have an activation function, then the ouput simply becomes product of weights and biases and hence the total function would be of linear form (A = mB). Hence to acheive non-linearity, we would need an activation function. UAT and representation power of neural networks heavily rely on non-linearity
+
+Types of activation functions
+  
+  Logistic
+  tanh
+  ReLU
+  Leaky ReLU
+
+Logistic Functions - disadvantages
+
+  Saturation points of a function 
+
+    In case of logistic function (sigmoid), saturation happens when f(x) = 0 or 1.. Meaning the derivative at these points becomes 0 as a result the gradient (weight update) becomes 0 (since derivative wrt activation function which is one of the term in the gradient would be 0). This is called vanishing update program. Saturated neurons cause gradients to vanish
+
+  Not zero centered 
+
+    Range of logistic function is [0, 1]. Hence it could never have negative values.. So all weight updates in a single layer could either all be positive / negative and never be mixed (only 1st and 3rd quadrant values in a graph possible and not 2nd and 4th). 
+
+  Logistic function is also computationally expensive
