@@ -1,0 +1,65 @@
+Regularization -
+
+  Lets say we have a true / actual function which our model is supposed to predict. Lets say we consider a simple (linear) lets call it 'S' and a complex (polynomial of degree 25) lets call it 'C' to be the approximate predictions. 
+
+  Lets say our training set has 1000 entries and we predict S and C for every batches of 100 values, then S and C would have the following behaviours 
+
+  S - The variations in S for each batch would be very minimum and it would be far deviated from the true function
+
+  C - The variations in C for each batch would be high and it would be close to the trur function
+
+  Bias Variance Trade Off - 
+
+    x - input
+    f(x) - actual prediction based on true function
+    f^(x) - prediction based on estimated function
+    E(f^(x)) - Expectation (average) of all predictions based on estimated function
+
+    Bias (f^(x)) = E(f^(x)) - f(x)
+
+    It basically gives the difference between average of all prediction based on estimated function and the actual prediction based on true function at each 'x'
+
+    Bias tells how different the prediction is from the actual value
+
+    Variance (f^(x)) = E(f^(x) - (E(f^x)^2))
+
+    It basically gives the expectation (average) of difference between prediction based on estimated function and the average of all predictions based on estimated function for each 'x'
+
+    Variance tells how the estimated function varies for each batch in the training set
+
+    S is seen to have high bias and low variance
+    C is seen to have low bias and high variance
+
+    High Bias leads to underfitting and high variance leads to overfitting
+
+    Since DNN's are very complex there are good changes of ending up in overfitting the model
+
+    An ideal ML model should have low bias and low variance
+
+  OverFitting
+
+    To avoid overffiting - 
+
+      1. Divide data into test, validation and test split (60, 20, 20 or 70, 10, 20 or 70, 20, 10)
+
+      2. Start with some network configuration (2 hidden layers with 50 neurons each)
+
+      3. Choose the right 
+        Activation function - tanh(RNN's) and ReLU (FNN's / CNN's) / Leaky ReLU (CNN's)
+        Initialization  - He / Xavier
+        Optimization method - Adam
+
+      4. Monitor train and validation error
+         If train error is high and validation error is high - Increase model complexity, epochs (High bias)
+         If train error is low and validation error is high - Do dataset augmentation, regularization, early stopping (High variance)
+         If train error and validation error are low - Ideal state
+
+    L2 Regularization - Loss function is modified to sum of loss function and sum of squares of absolute values of each weight in the model
+
+    Data Augmentation - Increase train data is less (if train data is < number of parameters)
+
+    Early Stopping - Keep a patience value (k) and after every k epochs, check if the validation loss is decreasing. If it doesnt stop early
+
+
+
+

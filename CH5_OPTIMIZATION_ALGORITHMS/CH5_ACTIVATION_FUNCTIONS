@@ -2,21 +2,63 @@ Need for activation functions -
   
   If we do not have an activation function, then the ouput simply becomes product of weights and biases and hence the total function would be of linear form (A = mB). Hence to acheive non-linearity, we would need an activation function. UAT and representation power of neural networks heavily rely on non-linearity
 
-Types of activation functions
-  
-  Logistic
-  tanh
-  ReLU
-  Leaky ReLU
+  Types of activation functions
+    
+    Logistic
+    tanh
+    ReLU
+    Leaky ReLU
 
-Logistic Functions - disadvantages
+  Logistic Functions - disadvantages
 
-  Saturation points of a function 
+    Saturation points of a function 
 
-    In case of logistic function (sigmoid), saturation happens when f(x) = 0 or 1.. Meaning the derivative at these points becomes 0 as a result the gradient (weight update) becomes 0 (since derivative wrt activation function which is one of the term in the gradient would be 0). This is called vanishing update program. Saturated neurons cause gradients to vanish
+      In case of logistic function (sigmoid), saturation happens when f(x) = 0 or 1.. Meaning the derivative at these points becomes 0 as a result the gradient (weight update) becomes 0 (since derivative wrt activation function which is one of the term in the gradient would be 0). This is called vanishing update program. Saturated neurons cause gradients to vanish
 
-  Not zero centered 
+    Not zero centered 
 
-    Range of logistic function is [0, 1]. Hence it could never have negative values.. So all weight updates in a single layer could either all be positive / negative and never be mixed (only 1st and 3rd quadrant values in a graph possible and not 2nd and 4th). 
+      Range of logistic function is [0, 1]. Hence it could never have negative values.. So all weight updates in a single layer could either all be positive / negative and never be mixed (only 1st and 3rd quadrant values in a graph possible and not 2nd and 4th). 
 
-  Logistic function is also computationally expensive
+    Logistic function is also computationally expensive
+
+  tanh 
+
+    Range of tanh is [-1, 1]
+    It is zero centered 
+    It still saturates at -1 and +1 and hence vanishing gradients are possible
+    tanh is also computationally expensive
+
+  ReLU 
+
+    Return x if x > 0 and 0 if x <= 0 and hence range is [0, +infinity]
+    Not zero centered
+    Saturates when x <= 0 (negative region)
+    Its not computationally expensive
+
+  Leaky ReLU 
+
+    Return x if x > 0 and 0.01x if x <=0. Range is [-infinity, +infinity]
+    Not zero centered. But negative gradients are possible
+    Doesnt saturate since gradient in postive region is 1 and in negative region is 0.01
+    Not computationally expensive
+
+Weight Initializations - 
+
+  All weights connected to a same neuron should never be initialized to same values or all zeros. This would result in the gradient being in the same value at all steps throughout the training.. This is called symmetry breaking problem.
+
+  Weights should never be initialized to larger values since this would increase the total pre-activation value and such large values would result in saturation in logistic and tanh functions. The same problem could happen if large input values are present as well. Hence input values should always be standardized / normalized
+
+  Xavier initialization
+
+    Since pre-activation function at each layer depends on the sum of neurons and weights in the previous layer, weights at each layer should be inversely proportional to the number of neurons in the previous layer to avoid resulting in large pre-activation values which would result in saturation. Hence each weight value is divided by the square root of m 
+
+    w = np.random.randn(no_of_neurons_in_prev_layer, no_of_neurons_in_current_layer) / sqrt(no_of_neurons_in_prev_layer)
+
+    This initialization can be used in tanh and logistic functions since saturation is more in these functions
+
+  He initialization
+
+    Used in ReLU and Leaky ReLu, extenstion of xavier initialization where the denominator is sqrt(no_of_neurons_in_prev_layer / 2) since half the neurons die in training
+
+
+
